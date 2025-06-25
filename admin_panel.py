@@ -99,6 +99,13 @@ def enable(key):
     return redirect("/admin/dashboard")
 
 
+@app.route("/admin/delete/<key>")
+def delete(key):
+    licenses = load_licenses()
+    licenses = [lic for lic in licenses if lic["key"] != key]
+    save_licenses(licenses)
+    return redirect("/admin/dashboard")
+
 # ---------- API for school app ----------
 @app.route("/api/check-license")
 def api_check():
