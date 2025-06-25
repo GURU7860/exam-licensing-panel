@@ -1,0 +1,22 @@
+<h2>🛠 License Dashboard</h2>
+<a href="/admin/generate">+ Generate New License</a>
+<table border="1" class="table table-bordered">
+  <tr>
+    <th>Key</th><th>School</th><th>Status</th><th>Expiry</th><th>Action</th>
+  </tr>
+  {% for lic in licenses %}
+  <tr>
+    <td>{{ lic.key }}</td>
+    <td>{{ lic.school }}</td>
+    <td>{{ lic.status }}</td>
+    <td>{{ lic.expires_on }}</td>
+    <td>
+      {% if lic.status == "active" %}
+        <a href="/admin/disable/{{ lic.key }}">Disable</a>
+      {% else %}
+        <a href="/admin/enable/{{ lic.key }}">Enable</a>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
