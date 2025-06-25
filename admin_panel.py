@@ -57,17 +57,21 @@ def generate():
     if request.method == "POST":
         school = request.form.get("school_name")
         validity_days = int(request.form.get("validity_days", 365))
+        custom_key = request.form.get("custom_key", "").strip().upper()
+
+        if custom_key:
+            key = custom_key
+        else:
+            key = f"{uuid.uuid4().hex[:8].upper()}-{uuid.uuid4().hex[:8].upper()}"
 
         licenses = load_licenses()
         new_license = {
-            "key": f"{uuid.uuid4().hex[:8].upper()}-{uuid.uuid4().hex[:8].upper()}",
+            "key": key,
             "school": school,
             "activated_on": None,
-            "expires_on": (datetime.now() + timedelta(days=validity_days)).strftime(
-                "%Y-%m-%d"
-            ),
+            "expires_on": (datetime.now() + timedelta(days=validity_days)).strftime("%Y-%m-%d"),
             "activated_ip": None,
-            "status": "active",
+            "status": "active"
         }
         licenses.append(new_license)
         save_licenses(licenses)
