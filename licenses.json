@@ -1,0 +1,18 @@
+[
+  {
+    "key": "2CD90A87-C798FF69",
+    "school": "Right Way Indian Convent School",
+    "activated_on": "2025-06-25",
+    "expires_on": "2026-06-22",
+    "activated_ip": "127.0.0.1",
+    "status": "active"
+  },
+  {
+    "key": "C4FE6F7E-768031CD",
+    "school": "Right Way Indian Convent School",
+    "activated_on": null,
+    "expires_on": "2026-06-25",
+    "activated_ip": null,
+    "status": "active"
+  }
+]
